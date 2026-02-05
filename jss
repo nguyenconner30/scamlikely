@@ -2,7 +2,6 @@ document.addEventListener("DOMContentLoaded", () => {
   const content = document.getElementById("content");
 
   function initScreen() {
-    // Buttons already exist in HTML
     const yesBtn = document.getElementById("yesBtn");
     const noBtn = document.getElementById("noBtn");
     const wrapper = document.querySelector(".btn-wrapper");
@@ -22,12 +21,12 @@ document.addEventListener("DOMContentLoaded", () => {
       const distance = Math.hypot(dx, dy);
       const repelDistance = 250;
 
-      if (distance < repelDistance) {
+      if(distance < repelDistance) {
         const angle = Math.atan2(dy, dx);
-        const repelX = -Math.cos(angle) * (repelDistance - distance);
-        const repelY = -Math.sin(angle) * (repelDistance - distance);
-        btnX += repelX * 0.3;
-        btnY += repelY * 0.3;
+        const repelX = -Math.cos(angle)*(repelDistance-distance);
+        const repelY = -Math.sin(angle)*(repelDistance-distance);
+        btnX += repelX*0.3;
+        btnY += repelY*0.3;
 
         btnX = Math.max(0, Math.min(btnX, wrapper.offsetWidth - noBtn.offsetWidth));
         btnY = Math.max(0, Math.min(btnY, wrapper.offsetHeight - noBtn.offsetHeight));
@@ -61,7 +60,7 @@ document.addEventListener("DOMContentLoaded", () => {
       <div class="final-screen">
         <h1 class="yay-title">❣️YAYAYAYAY❣️</h1>
         <div class="final-content">
-          <img src="https://i.imgur.com/VWq3Cnc.gif" class="final-gif" alt="kiss gif">
+          <img src="https://i.imgur.com/VWq3Cnc.gif" class="final-gif">
           <p class="final-text">I knew you'd click yes😏<br>Happy Valentine’s Day,<br> my love❣️</p>
           <div class="date-images">
             <img src="https://i.imgur.com/fc7DE9n.png">
@@ -78,9 +77,9 @@ document.addEventListener("DOMContentLoaded", () => {
     setInterval(() => {
       const heart = document.createElement("div");
       heart.classList.add("heart");
-      heart.style.left = `${Math.random() * 100}vw`;
+      heart.style.left = `${Math.random()*100}vw`;
       heart.style.setProperty('--rand', Math.random());
-      heart.style.animationDuration = `${2 + Math.random() * 3}s`;
+      heart.style.animationDuration = `${2 + Math.random()*3}s`;
       document.body.appendChild(heart);
       setTimeout(() => heart.remove(), 5000);
     }, 200);
