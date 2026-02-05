@@ -1,18 +1,8 @@
 document.addEventListener("DOMContentLoaded", () => {
   const content = document.getElementById("content");
 
-  // ----------------------------
-  // Initialize the first screen
-  // ----------------------------
   function initScreen() {
-    content.innerHTML = `
-      <h1>💌 Bubby, will You Be My Valentine?💌</h1>
-      <div class="btn-wrapper">
-        <button id="yesBtn" class="yes">Yes❣️</button>
-        <button id="noBtn" class="no">No😬</button>
-      </div>
-    `;
-
+    // Buttons already exist in HTML
     const yesBtn = document.getElementById("yesBtn");
     const noBtn = document.getElementById("noBtn");
     const wrapper = document.querySelector(".btn-wrapper");
@@ -20,9 +10,6 @@ document.addEventListener("DOMContentLoaded", () => {
     yesBtn.addEventListener("click", showYesScreen);
     noBtn.addEventListener("click", showNoScreen);
 
-    // ----------------------------
-    // No button movement
-    // ----------------------------
     let btnX = noBtn.offsetLeft;
     let btnY = 10;
 
@@ -30,26 +17,20 @@ document.addEventListener("DOMContentLoaded", () => {
       const rect = wrapper.getBoundingClientRect();
       const cursorX = e.clientX - rect.left;
       const cursorY = e.clientY - rect.top;
-
-      const btnWidth = noBtn.offsetWidth;
-      const btnHeight = noBtn.offsetHeight;
-
-      const dx = cursorX - (btnX + btnWidth / 2);
-      const dy = cursorY - (btnY + btnHeight / 2);
+      const dx = cursorX - (btnX + noBtn.offsetWidth / 2);
+      const dy = cursorY - (btnY + noBtn.offsetHeight / 2);
       const distance = Math.hypot(dx, dy);
-
       const repelDistance = 250;
 
       if (distance < repelDistance) {
         const angle = Math.atan2(dy, dx);
         const repelX = -Math.cos(angle) * (repelDistance - distance);
         const repelY = -Math.sin(angle) * (repelDistance - distance);
-
         btnX += repelX * 0.3;
         btnY += repelY * 0.3;
 
-        btnX = Math.max(0, Math.min(btnX, wrapper.offsetWidth - btnWidth));
-        btnY = Math.max(0, Math.min(btnY, wrapper.offsetHeight - btnHeight));
+        btnX = Math.max(0, Math.min(btnX, wrapper.offsetWidth - noBtn.offsetWidth));
+        btnY = Math.max(0, Math.min(btnY, wrapper.offsetHeight - noBtn.offsetHeight));
 
         noBtn.style.left = `${btnX}px`;
         noBtn.style.top = `${btnY}px`;
@@ -57,9 +38,6 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   }
 
-  // ----------------------------
-  // Show No screen
-  // ----------------------------
   function showNoScreen() {
     content.innerHTML = `
       <div class="final-screen">
@@ -78,9 +56,6 @@ document.addEventListener("DOMContentLoaded", () => {
     document.querySelector(".yes-again").addEventListener("click", showYesScreen);
   }
 
-  // ----------------------------
-  // Show Yes screen
-  // ----------------------------
   function showYesScreen() {
     content.innerHTML = `
       <div class="final-screen">
@@ -99,9 +74,6 @@ document.addEventListener("DOMContentLoaded", () => {
     startHeartConfetti();
   }
 
-  // ----------------------------
-  // Continuous heart confetti
-  // ----------------------------
   function startHeartConfetti() {
     setInterval(() => {
       const heart = document.createElement("div");
