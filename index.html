@@ -7,24 +7,13 @@
   <title>scamlikely</title>
   <link rel="stylesheet" href="style.css">
 
-  <!-- Add your script here with defer -->
+  <!-- Defer JS so it runs after HTML loads -->
   <script src="script.js" defer></script>
 </head>
 
 <body>
-  <div class="phone-screen">
-    <div class="content" id="content">
-      <h1>💌 Bubby, will You Be My Valentine?💌</h1>
-      <img src="https://media4.giphy.com/media/v1.Y2lkPTc5MGI3NjExZ3dxcWg0cm1jbmR5bXo2dWt6YzZ2Nm54amlycWhuazRzNGI1ZDV6OCZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/x28cIQSn19Tbi/giphy.gif" class="gif" alt="cute valentine gif">
-      <p class="question">'No' is looking kinda shy >.< <div class="btn-wrapper">
-          <button id="yesBtn" class="yes">Yes❣️</button>
-          <!-- NO button moved OUTSIDE flex, still inside wrapper -->
-          <button id="noBtn" class="no">No😬 </button>
-    </div>
-  </div>
-  </div>
-
-  <script src="script.js"></script>
+  <!-- The JS will dynamically fill this content -->
+  <div class="phone-screen" id="content"></div>
 </body>
 
 </html>
