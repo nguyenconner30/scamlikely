@@ -1,12 +1,15 @@
 document.addEventListener("DOMContentLoaded", () => {
   const content = document.getElementById("content");
 
+  // ----------------------------
+  // Initialize the first screen
+  // ----------------------------
   function initScreen() {
     content.innerHTML = `
-      <h1>Will you be my Valentine?</h1>
+      <h1>💌 Bubby, will You Be My Valentine?💌</h1>
       <div class="btn-wrapper">
         <button id="yesBtn" class="yes">Yes❣️</button>
-        <button id="noBtn" class="no">No</button>
+        <button id="noBtn" class="no">No😬</button>
       </div>
     `;
 
@@ -17,7 +20,9 @@ document.addEventListener("DOMContentLoaded", () => {
     yesBtn.addEventListener("click", showYesScreen);
     noBtn.addEventListener("click", showNoScreen);
 
+    // ----------------------------
     // No button movement
+    // ----------------------------
     let btnX = noBtn.offsetLeft;
     let btnY = 10;
 
@@ -52,6 +57,9 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   }
 
+  // ----------------------------
+  // Show No screen
+  // ----------------------------
   function showNoScreen() {
     content.innerHTML = `
       <div class="final-screen">
@@ -70,6 +78,9 @@ document.addEventListener("DOMContentLoaded", () => {
     document.querySelector(".yes-again").addEventListener("click", showYesScreen);
   }
 
+  // ----------------------------
+  // Show Yes screen
+  // ----------------------------
   function showYesScreen() {
     content.innerHTML = `
       <div class="final-screen">
@@ -88,6 +99,9 @@ document.addEventListener("DOMContentLoaded", () => {
     startHeartConfetti();
   }
 
+  // ----------------------------
+  // Continuous heart confetti
+  // ----------------------------
   function startHeartConfetti() {
     setInterval(() => {
       const heart = document.createElement("div");
