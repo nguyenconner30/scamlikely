@@ -1,11 +1,6 @@
-// Wait until DOM is fully loaded
 document.addEventListener("DOMContentLoaded", () => {
-
   const content = document.getElementById("content");
 
-  // ----------------------------
-  // Initialize the first screen
-  // ----------------------------
   function initScreen() {
     content.innerHTML = `
       <h1>Will you be my Valentine?</h1>
@@ -15,24 +10,14 @@ document.addEventListener("DOMContentLoaded", () => {
       </div>
     `;
 
-    // Query buttons AFTER they exist
     const yesBtn = document.getElementById("yesBtn");
     const noBtn = document.getElementById("noBtn");
     const wrapper = document.querySelector(".btn-wrapper");
 
-    // ----------------------------
-    // Yes button click
-    // ----------------------------
     yesBtn.addEventListener("click", showYesScreen);
-
-    // ----------------------------
-    // No button click
-    // ----------------------------
     noBtn.addEventListener("click", showNoScreen);
 
-    // ----------------------------
     // No button movement
-    // ----------------------------
     let btnX = noBtn.offsetLeft;
     let btnY = 10;
 
@@ -67,9 +52,6 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   }
 
-  // ----------------------------
-  // Show No screen
-  // ----------------------------
   function showNoScreen() {
     content.innerHTML = `
       <div class="final-screen">
@@ -85,15 +67,9 @@ document.addEventListener("DOMContentLoaded", () => {
         </div>
       </div>
     `;
-
-    // Attach listener to dynamically created Yes button
-    const yesAgain = document.querySelector(".yes-again");
-    yesAgain.addEventListener("click", showYesScreen);
+    document.querySelector(".yes-again").addEventListener("click", showYesScreen);
   }
 
-  // ----------------------------
-  // Show Yes screen
-  // ----------------------------
   function showYesScreen() {
     content.innerHTML = `
       <div class="final-screen">
@@ -109,14 +85,9 @@ document.addEventListener("DOMContentLoaded", () => {
         </div>
       </div>
     `;
-
-    // Start continuous heart confetti
     startHeartConfetti();
   }
 
-  // ----------------------------
-  // Continuous heart confetti
-  // ----------------------------
   function startHeartConfetti() {
     setInterval(() => {
       const heart = document.createElement("div");
@@ -129,9 +100,5 @@ document.addEventListener("DOMContentLoaded", () => {
     }, 200);
   }
 
-  // ----------------------------
-  // Initialize the first screen
-  // ----------------------------
   initScreen();
-
 });
